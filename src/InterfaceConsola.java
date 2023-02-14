@@ -11,13 +11,16 @@ public class InterfaceConsola {
         System.out.println("BUENA SUERTE");
     }
     public void gamecontroller(){
-
+        printmapa();
     }
 
     public void printmapa(){
-        char[] mapa;
+        char[] mapa = new char[9];
+        mapa[1]='a';
+        mapa[2]='b';
+        mapa[3]='c';
         System.out.println(" | A | B | C |");
-        System.out.println("1| * | * | * |");
+        System.out.printf("1| %c | %c | %c |\n",mapa[1],mapa[2],mapa[3]);
         System.out.println("2| * | * | * |");
         System.out.println("3| * | * | * |");
     }
