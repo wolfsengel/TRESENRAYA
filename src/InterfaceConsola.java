@@ -19,31 +19,38 @@ public class InterfaceConsola {
         Scanner sc = new Scanner(System.in);
         String[] posicion;
         printmapa(jueguito.tablero);
+        char resultado;
+        int count=0;
         while(true){
             System.out.println("Dime la posicion deseada: ");
             posicion=sc.nextLine().split("");
             jueguito.insercion(posicion);
+            printmapa(jueguito.tablero);
+            System.out.println("Ahi esta tu ficha, ahora la maquina:");
             jueguito.insercionM(jueguito.turnomaquina());
             printmapa(jueguito.tablero);
-            if (jueguito.getWinner() == 'X') {
-                System.out.println("Congratulations! You win!");
-                break;
-            } else if (jueguito.getWinner() == 'O') {
-                System.out.println("Sorry, the computer wins.");
-                break;
-            } else{
-                System.out.println("It's a tie!");
-                break;
+            System.out.println("Ahi puso la maquina!");
+            resultado= jueguito.getWinner();
+            count++;
+            if (resultado == 'X') {
+                System.out.println("GANASTEEEEEE OLEEEEEE");
+                return;
+            } else if (resultado == 'O') {
+                System.out.println("Te gano la maquina :(((((((");
+                return;
+            } else if(count == 9){
+                System.out.println("EMPATASTE EL DIABLOO");
+                return;
             }
         }
 
     }
 
     public void printmapa(char[][] mapa){
-        System.out.println(" | A | B | C |");
+        System.out.println(" | 1 | 2 | 3 |");
         System.out.printf("1| %c | %c | %c |\n",mapa[1][1],mapa[1][2],mapa[1][3]);
-        System.out.printf("1| %c | %c | %c |\n",mapa[2][1],mapa[2][2],mapa[2][3]);
-        System.out.printf("1| %c | %c | %c |\n",mapa[3][1],mapa[3][2],mapa[3][3]);
+        System.out.printf("2| %c | %c | %c |\n",mapa[2][1],mapa[2][2],mapa[2][3]);
+        System.out.printf("3| %c | %c | %c |\n",mapa[3][1],mapa[3][2],mapa[3][3]);
 
     }
 
