@@ -26,20 +26,22 @@ public class InterfaceConsola {
             posicion=sc.nextLine().split("");
             jueguito.insercion(posicion);
             printmapa(jueguito.tablero);
+            count++;
+            if(count == 5){
+                System.out.println("EMPATASTE EL DIABLOO");
+                return;
+            }
             System.out.println("Ahi esta tu ficha, ahora la maquina:");
             jueguito.insercionM(jueguito.turnomaquina());
             printmapa(jueguito.tablero);
             System.out.println("Ahi puso la maquina!");
             resultado= jueguito.getWinner();
-            count++;
+
             if (resultado == 'X') {
                 System.out.println("GANASTEEEEEE OLEEEEEE");
                 return;
             } else if (resultado == 'O') {
                 System.out.println("Te gano la maquina :(((((((");
-                return;
-            } else if(count == 9){
-                System.out.println("EMPATASTE EL DIABLOO");
                 return;
             }
         }
