@@ -1,6 +1,14 @@
 import motor3R.TresEnRaya;
 import java.util.Scanner;
+
+/**
+ * Clase que representa la interfaz de usuario para el juego Tres en Raya.
+ */
 public class InterfaceConsola {
+
+    /**
+     * Muestra la presentación del juego.
+     */
     public void presentacion(){
         System.out.println("Bienvenidos al tres en RAYA");
         System.out.println("ESTE ES EL CAMPO DE JUEGO:");
@@ -12,20 +20,23 @@ public class InterfaceConsola {
         System.out.println("Tu selecciona que posicion quieras con ordenes como pEj.: 32\n" +
                 "Empezando por el eje X primero :)");
         System.out.println("BUENA SUERTE");
-
     }
+
+    /**
+     * Controla el flujo del juego.
+     */
     public void gamecontroller(){
         TresEnRaya jueguito = new TresEnRaya();
         Scanner sc = new Scanner(System.in);
         String[] posicion;
-        printmapa(jueguito.tablero);
+        printmapa(jueguito.Map());
         char resultado;
         int count=0;
         while(true){
             System.out.println("Dime la posicion deseada: ");
             posicion=sc.nextLine().split("");
             jueguito.insercion(posicion);
-            printmapa(jueguito.tablero);
+            printmapa(jueguito.Map());
             count++;
             if(count == 5){
                 System.out.println("EMPATASTE EL DIABLOO");
@@ -33,7 +44,7 @@ public class InterfaceConsola {
             }
             System.out.println("Ahi esta tu ficha, ahora la maquina:");
             jueguito.insercionM(jueguito.turnomaquina());
-            printmapa(jueguito.tablero);
+            printmapa(jueguito.Map());
             System.out.println("Ahi puso la maquina!");
             resultado= jueguito.getWinner();
 
@@ -48,6 +59,11 @@ public class InterfaceConsola {
 
     }
 
+    /**
+     * Imprime el mapa de juego.
+     *
+     * @param mapa la matriz que representa el estado actual del juego.
+     */
     public void printmapa(char[][] mapa){
         System.out.println(" | 1 | 2 | 3 |");
         System.out.printf("1| %c | %c | %c |\n",mapa[1][1],mapa[1][2],mapa[1][3]);
@@ -57,6 +73,11 @@ public class InterfaceConsola {
     }
 
 
+    /**
+     * Función principal que inicia el juego.
+     *
+     * @param args los argumentos de línea de comandos (no se utilizan).
+     */
     public static void main(String[] args) {
         InterfaceConsola juego = new InterfaceConsola();
         juego.presentacion();

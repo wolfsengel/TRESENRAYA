@@ -9,10 +9,24 @@ import java.util.Random;
 *
 * */
 
-
+/**
+ * Clase que representa el tablero del juego Tres en Raya.
+ */
 public class TresEnRaya {
-    public char[][] tablero = { {' ',' ',' ',' '},{' ',' ',' ',' '},{' ',' ',' ',' '},{' ',' ',' ',' '}};
+    private final char[][] tablero; // tablero del juego
 
+    /**
+     * Constructor de la clase.
+     * Inicializa el tablero con espacios en blanco.
+     */
+    public TresEnRaya() {
+        tablero = new char[][] { {' ', ' ', ' '}, {' ', ' ', ' '}, {' ', ' ', ' '} };
+    }
+    /**
+     * Método que inserta una pieza en el tablero.
+     * @param cositas arreglo de dos elementos que contiene la posición en la que se desea insertar la pieza.
+     * El primer elemento representa la fila y el segundo elemento representa la columna.
+     */
    public void insercion(String[] cositas){
        if (tablero[Integer.parseInt(cositas[0])][Integer.parseInt(cositas[1])]!=' '){
            System.out.println("Pierdes turno por listo, ahi ya habia una pieza!");
@@ -21,6 +35,19 @@ public class TresEnRaya {
        }
    }
 
+    /**
+     * Método que devuelve el tablero del juego.
+     * @return el tablero del juego
+     */
+   public char[][] Map(){
+       return tablero;
+   }
+
+    /**
+     * Método que representa el turno de la máquina.
+     * @return un arreglo de dos elementos que representa la posición en la que la máquina insertará su pieza.
+     * El primer elemento representa la fila y el segundo elemento representa la columna.
+     */
     public int[] turnomaquina() {
         for (int row = 1; row < 4; row++) {
             for (int col = 1; col < 4; col++) {
@@ -56,7 +83,11 @@ public class TresEnRaya {
         return new int[] { row, col };
     }
 
-
+    /**
+     * Método que representa si hay ganador y quien es.
+     * @return un arreglo de dos elementos que representa la posición en la que hay una pieza del ganador.
+     * El primer elemento representa la fila y el segundo elemento representa la columna.
+     */
     public char getWinner() {
        //Lineas
         if (tablero[1][1] == tablero[1][2] && tablero[1][2] == tablero[1][3] && tablero[1][1] != ' ') {
@@ -93,7 +124,11 @@ public class TresEnRaya {
 
     }
 
-
+    /**
+     * Método que inserta una pieza en el tablero por la Máquina.
+     * @param turnomaquina arreglo de dos elementos que contiene la posición en la que se desea insertar la pieza.
+     * El primer elemento representa la fila y el segundo elemento representa la columna.
+     */
     public void insercionM(int[] turnomaquina) {
         tablero[turnomaquina[0]][turnomaquina[1]] = 'O';
     }
